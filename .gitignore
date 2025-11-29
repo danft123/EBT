@@ -1,0 +1,7 @@
+*aprendizado
+*__pycache__
+data
+outputs
+*DS_Store
+.vscode
+.venv
