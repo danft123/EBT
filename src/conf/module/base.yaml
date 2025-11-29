@@ -1,0 +1,4 @@
+_target_: src.module.base.BaseModule
+lr: 0.001
+model:
+  _target_: src.model.base.BaseModel
