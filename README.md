@@ -1,0 +1,1 @@
+src.model.transformer contains code for a decoder transformer model with energy-based capabilities.
