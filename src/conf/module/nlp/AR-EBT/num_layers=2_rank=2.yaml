@@ -1,0 +1,15 @@
+_target_: src.module.transformer.EnergyTransformerModule
+_recursive_: false
+model:
+  _target_: src.model.transformer.EnergyTransformer
+  num_layers: 2
+  hidden_size: 512
+  num_heads: 8
+  expansion: 4.0
+  pre_norm: true # shallow models benefit from pre-norm
+  algorithm: "symmetric"
+  rank: 2
+  pos_encoding: "rope"
+  max_seq_len: 1024
+tokenizer:
+  _target_: ???
