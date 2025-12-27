@@ -7,7 +7,7 @@ import torch
 from torch import Tensor
 from torch.nn import Embedding
 
-class EnergyTransformerModule(LightningModule):
+class EnergyTransformerDecoder(LightningModule):
     def __init__(self, model: dict[str,Any], candidate_step_size: float, candidate_sigma: float, tokenizer: dict[str,Any], *args, **kwargs):
         super().__init__()
         self.save_hyperparameters(ignore="model")
@@ -28,16 +28,17 @@ class EnergyTransformerModule(LightningModule):
         Given the current candidate and the energy, produce the next candidate.
         This can be done using Gradient Descent and Langevin dynamics: next_candidate = current_candidate - step_size * grad_energy + noise where noise is sampled from N(0, sigma)
         Args:
-        current_candidate: The current candidate tensor of shape (bsz, 1, hidden_dim)
+        current_candidate: The current candidate tensor of shape (bsz, 1, vocab_size)
         energy: The energy resulted from context and current_candidate of shape (bsz)
         Returns:
-        next_candidate: The next candidate tensor of shape (bsz, 1, hidden_dim)
+        next_candidate: The next candidate tensor of shape (bsz, 1, vocab_size)
         """
         
         # This is incorrect, instead of hidden_dim we should use vocab_size #TODO fix later
         # noise = torch.randn_like(current_candidate) * self.candidate_sigma
         # next_candidate = current_candidate - self.candidate_step_size * torch.autograd.grad(energy.sum(), current_candidate)[0]
         # return next_candidate + noise
+        
 
     def training_step(self, batch: dict[str,Any], batch_idx: int) -> Tensor:
         """
