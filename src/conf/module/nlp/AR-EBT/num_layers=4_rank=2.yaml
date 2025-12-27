@@ -1,4 +1,4 @@
-_target_: src.module.transformer.EnergyTransformerModule
+_target_: src.module.transformer.EnergyTransformerDecoder
 _recursive_: false
 model:
   _target_: src.model.transformer.EnergyTransformer
